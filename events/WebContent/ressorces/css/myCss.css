@@ -8,3 +8,14 @@
 	margin-top: 200px;
 	
 }
+
+.barMenu {
+	background-color: #009DE0;
+    border-radius: 5px;
+}
+.barMenu *> td{
+	padding:5px;
+}
+.barMenu *> button {
+    margin: 5px;
+}

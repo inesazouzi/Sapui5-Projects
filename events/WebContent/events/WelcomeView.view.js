@@ -18,42 +18,55 @@ sap.ui.jsview("events.WelcomeView", {
 		var container = new sap.ui.commons.layout.MatrixLayout({
 			id : "WelcomeContainer",
 			layoutFixed : false,
-			});
-	
-		//button to redirect to the mail.view
-		var oSendEmail =  new sap.ui.commons.Button({
-			id : "mail", // sap.ui.core.ID
-			text: "Send Mail",
-			press: function(){
-				var oMainView = sap.ui.getCore().byId("mainView");
-				oMainView.getController().showEmailView();
-						}
+		});	
+		/**Table : Inbox Emails (Sent and Received)**/
+		var oTableInbox = new sap.ui.table.Table({
+			title: "My Inbox",
+			visibleRowCount: 7,
+			selectionMode: sap.ui.table.SelectionMode.Single,
+			width:"100%"
 		});
+		//Type: sent || received
+		var oColumn = new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Type"}),
+			template: new sap.ui.commons.TextView().bindProperty("text", "type"),
+			sortProperty: "type",
+			filterProperty: "type",
+			width: "100px"
+		});
+		oTableInbox.addColumn(oColumn);
 		
-		//button to redirect to the manage.view
-		var oManageWorkTime =  new sap.ui.commons.Button({
-			id : "manage", // sap.ui.core.ID
-			text: "Manage Your Work Time",
-			press: function(){
-				var oMainView = sap.ui.getCore().byId("mainView");
-				oMainView.getController().showManageView();
-						}
+		//To || From : if you sent the mail (To) and if you received (from who)
+		var oColumn = new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "From/To"}),
+			template: new sap.ui.commons.TextView().bindProperty("text", "creator"),
+			sortProperty: "creator",
+			filterProperty: "creator",
+			width: "100px"
 		});
-	
-		//button to redirect to the stats.view
-		var oStatsWorkTime =  new sap.ui.commons.Button({
-			id : "stats", // sap.ui.core.ID
-			text: "Statistic of your WOrk Time",
-			press: function(){
-				var oMainView = sap.ui.getCore().byId("mainView");
-				oMainView.getController().showStatsView();
-						}
-		});
+		oTableInbox.addColumn(oColumn);
 		
-		//add IU element to the layout container
-		container.createRow( oSendEmail, oManageWorkTime,oStatsWorkTime );	
-	
+		//date
+		var oColumn = new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Date"}),
+			template: new sap.ui.commons.DatePicker({editable:false}).bindProperty("value", "date_creation"),
+			sortProperty: "date_creation",
+			filterProperty: "date_creation",
+			width: "100px"
+		});
+		oTableInbox.addColumn(oColumn);
+		
+		//Subject
+		var oColumn = new sap.ui.table.Column({
+			label: new sap.ui.commons.Label({text: "Subject"}),
+			template: new sap.ui.commons.TextView().bindProperty("text", "subject"),
+			sortProperty: "subject",
+			filterProperty: "subject",
+			width: "100px"
+		});
+		oTableInbox.addColumn(oColumn);
+		
+		container.createRow(oTableInbox);
 		return container;
 	}
-
 });

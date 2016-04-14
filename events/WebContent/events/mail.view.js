@@ -15,15 +15,6 @@ sap.ui.jsview("events.mail", {
 	createContent : function(oController) {
 		var container = new sap.ui.commons.layout.MatrixLayout({id:"MailContainer"});
 		
-		var oBack =  new sap.ui.commons.Button({
-			id : "MailBack", // sap.ui.core.ID
-			text: "Back to the Welcome Page",
-			style: sap.ui.commons.ButtonStyle.Emph,
-			press: function(){
-				var oMainView = sap.ui.getCore().byId("mainView");
-				oMainView.getController().backToWelcome(this.getParent().getParent().getParent().getParent());
-						}
-		});
 		var oSendMailForm = new sap.ui.layout.form.SimpleForm(
 				"sendMail",
 				{
@@ -60,16 +51,10 @@ sap.ui.jsview("events.mail", {
 								style: sap.ui.commons.ButtonStyle.Reject,
 									}),	
 								
-							]
-				
-				
-				});
+							]			
+				});		
 		
-		
-		container.createRow(oSendMailForm,oBack);
-		
-		
+		container.createRow(oSendMailForm);	
 		return container ;
 	}
-
 });

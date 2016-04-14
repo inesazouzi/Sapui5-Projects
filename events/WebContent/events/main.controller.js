@@ -36,6 +36,7 @@ sap.ui.controller("events.main", {
 //	}
 	//show the welcome.view
 	showWelcomeView:function(){
+		buildWelcomeViewMenuBar();
 		var oLogin = sap.ui.getCore().byId("loginView");
 		oLogin.setVisible(false);
 		var oWelcome = sap.ui.getCore().byId("welcomeView");
