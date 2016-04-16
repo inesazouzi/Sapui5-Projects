@@ -103,5 +103,6 @@ sap.ui.controller("events.main", {
 		oView.setVisible(false);
 		var oWelcome = sap.ui.getCore().byId("welcomeView");
 		oWelcome.setVisible(true);	
+		buildWelcomeViewMenuBar();
 	},
 });

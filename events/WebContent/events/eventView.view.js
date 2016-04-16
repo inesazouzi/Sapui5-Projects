@@ -84,7 +84,8 @@ sap.ui.jsview("events.eventView", {
 											        	text:"Cancel",
 											        	width:"133px",
 											        	style: sap.ui.commons.ButtonStyle.Reject,
-											        	press:oController.onCancel
+											        	press: oController.onCancel
+											        	
 											        })
 											       ]
 										})

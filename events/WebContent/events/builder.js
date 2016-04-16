@@ -2,6 +2,7 @@
 
 
 function buildMainViewMenuBar(oController){
+	var oMenuBar = sap.ui.getCore().byId("idMenuBar");
 	if(oMenuBar == undefined)
 	{
 		var oMenuBar = new sap.ui.commons.layout.MatrixLayout("idMenuBar").addStyleClass("barMenu");
@@ -67,7 +68,8 @@ function buildMailViewMenuBar(){
 		text: "Back to the Welcome Page",
 		press: function(){
 			var oMainView = sap.ui.getCore().byId("mainView");
-			oMainView.getController().backToWelcome(this.getParent().getParent().getParent().getParent());
+			var oMailView = sap.ui.getCore().byId("mailView");
+			oMainView.getController().backToWelcome(oMailView);
 		}
 	});
 	
